@@ -15,9 +15,10 @@ const save_FormData = () => {
 
 const load_FormData = () => {
 	const savedData = localStorage.getItem('feedback-form-state');
-	const { email, message } = savedData ? JSON.parse(savedData) : {};
+  if(savedData)
+	{const { email, message } = savedData ? JSON.parse(savedData) : {};
 	emailInput.value = email;
-	messageInput.value = message;
+	messageInput.value = message;}
 };
 
 const handleSubmit = event => {
@@ -39,3 +40,6 @@ const handleSubmit = event => {
 form.addEventListener('input', throttle(save_FormData, 500));
 window.addEventListener('DOMContentLoaded', load_FormData);
 form.addEventListener('submit', handleSubmit);
+
+
+
